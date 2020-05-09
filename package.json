@@ -1,0 +1,19 @@
+{
+  "name": "dcbot",
+  "version": "1.0.0",
+  "description": "dcbot",
+  "main": "index.js",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
