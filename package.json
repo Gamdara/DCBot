@@ -8,12 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": " "
+    "url": "https://github.com/Gamdara/DCBot"
   },
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "discord.js": "^12.2.0"
+    "@discordjs/node-pre-gyp": "^0.1.0",
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.2.0",
+    "ffmpeg-static": "^4.2.1",
+    "sodium": "^3.0.2",
+    "ytdl-core-discord": "^1.2.0"
   }
 }

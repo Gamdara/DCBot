@@ -1,17 +1,20 @@
 module.exports = {
     name: 'hapus',
-    description: '',
-    execute(msg, args) {
-        const jumlah = parseInt(args[0]) + 1;
-        if (isNaN(jumlah)) {
-            return msg.reply('Masukin Jumlah nya');
+    description: 'hapus pesan',
+	execute(message, args) {
+		const amount = parseInt(args[0]) + 1;
+
+		if (isNaN(amount)) {
+			return message.reply('Pake angka cok');
         }
-        else if (jumlah <= 1 || jumlah > 100) {
-        return msg.reply('Hapus aja discord kau');
-        }
-        msg.channel.bulkDelete(jumlah, true).catch(err => {
-            console.error(err);
-            msg.channel.send('Lah error');
-        });
-    },
+        else if (amount <= 1 || amount > 100) {
+			return message.reply('Hapus aja discord kau');
+		}
+
+		message.channel.bulkDelete(amount, false).catch(err => {
+			console.error(err);
+			message.channel.send('Lah error');
+		});
+	},
+
 };
