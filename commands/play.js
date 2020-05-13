@@ -1,6 +1,5 @@
 const fs = require('fs');
-const ytdl = require('ytdl-core');
-require('puterLagu.js');
+const puterLagu = require('../classes/puterlagu.js');
 
 module.exports = {
     name: 'play',

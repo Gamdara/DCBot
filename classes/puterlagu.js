@@ -1,4 +1,6 @@
-class puterLagu {
+const ytdl = require('ytdl-core');
+
+module.exports = class puterLagu {
     constructor(channel){
         this.listlagu = [];
         this.channel = channel;
@@ -6,10 +8,9 @@ class puterLagu {
         this.dispatcher;
     }
 
-    play(lagu = this.listlagu[queue]){
+    play(lagu){
         if(!this.listlagu.length){
             this.listlagu.push(lagu);
-            console.log(this.listlagu);
             this.channel.join().then(connection => {
                 this.dispatcher = connection.play(ytdl(lagu, { filter: 'audioonly' }));
                 this.dispatcher.on('end', () => {
@@ -20,6 +21,7 @@ class puterLagu {
                         this.channel.leave();
                     }
                 });
+                this.dispatcher.on('error', (err) => console.log(err));
             });
         }
         else{
