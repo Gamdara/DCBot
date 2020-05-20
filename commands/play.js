@@ -11,13 +11,13 @@ module.exports = {
             return message.reply('Pala kau tak puter');
         }    
 
-        const hasilcari = await musik.carilagu(input).then(() => {
+        await musik.carilagu(input).then(hasilcari => {
             const addtolist = musik.add(hasilcari[0]);
         });
         
         if( musik.playlist.length > 1) return;
         
-        const connection = await musik.connect(channel,message).then(() => {
+        await musik.connect(channel,message).then(() => {
             musik.puter();
         });
         
