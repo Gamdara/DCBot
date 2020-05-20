@@ -11,9 +11,9 @@ module.exports = {
 			return message.reply('Hapus aja discord kau');
 		}
 
-		message.channel.bulkDelete(amount, false).catch(err => {
+		return message.channel.bulkDelete(amount, false).catch(err => {
 			console.error(err);
-			message.channel.send('Lah error');
+			message.channel.send('error hapus');
 		});
 	},
 

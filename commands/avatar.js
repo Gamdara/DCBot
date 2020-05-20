@@ -6,6 +6,7 @@ module.exports = {
 	aliases: ['icon', 'pfp'],
 	execute(message) {
 		if (!message.mentions.users.size) {
+			console.log(message);
 			const pesan = new Discord.MessageEmbed()
 				.setTitle('PP mu')
 				.setColor('#0099ff')
@@ -21,7 +22,6 @@ module.exports = {
 				'avatar' : user.displayAvatarURL({ dynamic: true })
 			}
 		});
-		console.log(avatarList);
 		
 		for(avatar of avatarList.values()){
 			console.log(avatar);
@@ -30,16 +30,7 @@ module.exports = {
 				.setColor('#0099ff')
 				.setImage(avatar.avatar)
 				.setURL(avatar.avatar);
-			message.channel.send(pesan);
+			return message.channel.send(pesan);
 		}
-
-		// const avatarLists = message.mentions.users.map(user => {
-		// 	const pesan = new Discord.MessageEmbed()
-        //     	.setTitle(`PPnya ${user.username}:`)
-        //     	.setImage(user.displayAvatarURL({ dynamic: true }));
-		// 	return pesan;
-		// });
-
-		// message.channel.send(avatarList);
 	},
 };

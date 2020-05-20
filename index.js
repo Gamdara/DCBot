@@ -1,8 +1,8 @@
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
-const puterLagu = require('./classes/puterlagu.js');
 
+const Discord = require('discord.js');
+const fs = require('fs');
+const { prefix, token } = require('./config.json');
+const dbcon = require("./dbConnection.js");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -17,10 +17,11 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 
 client.once('ready', () => {
+	dbcon.connect();
 	console.log('Ready!');
 });
 
-client.on('message', message => {
+client.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
@@ -70,11 +71,16 @@ client.on('message', message => {
 	}
     catch (error) {
 		console.error(error);
-		message.reply('Lah error');
+		message.reply('error index');
 	}
 });
 
-client.on('message', message => {
+client.on('error', error => {
+    console.log(error);
+    // Do something eg. Log the Error
+});
+
+client.on('message', async message => {
 	const kal = /^[Kk]+[Aa]+[Ll]+$/;
 	const utu = /^[Uu]+[Tt]+[Uu]+$/;
 	const mak = /^[Mm]+[Aa]+[Kk]+$/;
